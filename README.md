@@ -2,13 +2,9 @@
 
 The files in this repository were used to configure the network depicted below.
 
-https://github.com/RUSSELLNELSON1/Project1
-
 These files have been tested and used to generate a live ELK deployment on Azure. 
 They can be used to either recreate the entire deployment pictured above. 
 Alternatively, select portions of the ELK file may be used to install only certain pieces of it, such as Filebeat.
-
-https://github.com/RUSSELLNELSON1/Project1/tree/main/Ansible
 
 ### Description of the Topology
 
@@ -60,19 +56,21 @@ The playbook implements the following tasks:
 -Download and Launch ELK Docker Container
 -Make published ports available. 
 
-The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
-
-
 
 ### Target Machines & Beats
 This ELK server is configured to monitor the following machines:
-- _TODO: List the IP addresses of the machines you are monitoring_
+| Web Server| No                 | 10.0.0.1             |
+| Jump Box  | Yes/No             | 10.0.0.7             |
 
 We have installed the following Beats on these machines:
-- _TODO: Specify which Beats you successfully installed_
+| ELK Server| No                 | 10.0.0.1             |
+| Kibana    | Yes                | Public IP            |
+| DVWA      | Yes                | Public IP            |
 
 These Beats allow us to collect the following information from each machine:
-- _TODO: In 1-2 sentences, explain what kind of data each beat collects, and provide 1 example of what you expect to see. E.g., `Winlogbeat` collects Windows logs, which we use to track user logon events, etc._
+Filebeat collects log data
+Metricbeat collects metrics from the operating system and from services running on the server
+Packetbeat collects packets sent to and from the server
 
 ### Using the Playbook
 In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned: 
@@ -80,11 +78,8 @@ In order to use the playbook, you will need to have an Ansible control node alre
 SSH into the control node and follow the steps below:
 - Copy the Instal-Elk.yml file to /etc/ansible.
 - Update the host file to include...
-- Run the playbook, and navigate to ____ to check that the installation worked as expected.
+- Run the playbook, and navigate to Ansible to check that the installation worked as expected.
 
-_TODO: Answer the following questions to fill in the blanks:_
-- _Which file is the playbook? Where do you copy it?_
-- _Which file do you update to make Ansible run the playbook on a specific machine? How do I specify which machine to install the ELK server on versus which to install Filebeat on?_
-- _Which URL do you navigate to in order to check that the ELK server is running?
-
-_As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc._
+Move my-playbook.yml to ansible/playbooks
+To switch the machine the playbook is running on you edit my-playbook.yml. One line of code will decide where ansible is installed and another will choose where it runs
+The Public IP that is hosting the machine from Azure
